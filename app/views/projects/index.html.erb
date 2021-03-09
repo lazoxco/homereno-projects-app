@@ -12,3 +12,5 @@
   <p><%= link_to project.title, project %> by <%= project.user.username %></p>
   <hr>
 <% end %>
+
+<%= link_to "Create a New Project", new_project_path, class: "btn btn-primary" %>
