@@ -1,0 +1,14 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">  
+    <h1>The app for DIY and home improvement enthusiasts.</h1>
+  </p>
+  <hr>
+  </div>
+</div>
+
+<h2>Recent Projects</h2>
+
+<% @projects.each do |project| %>
+  <p><%= link_to project.title, project %> by <%= project.user.username %></p>
+  <hr>
+<% end %>
