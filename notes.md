@@ -10,18 +10,18 @@
   - content
 
 ## User
-  - has_many :posts
+  - has_many :project
   - has_many :comments
-  - has_many :commented_posts, through: :comments
+  - has_many :commented_projects, through: :comments
 
   - username
   - email
   - password (password_digest in DB only)
 
 ## Comment
-  * Join table, joining users and posts
+  * Join table, joining users and projects
   - belongs_to :user
-  - belongs_to :post
+  - belongs_to :project
 
   - content
 
@@ -29,7 +29,7 @@
 ## Task
 
 ## Category
-  - has_many :posts
-  - has_many :users, through: :posts
+  - has_many :projects
+  - has_many :users, through: :projects
 
   - name
