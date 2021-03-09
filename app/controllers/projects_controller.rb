@@ -22,6 +22,24 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @project = Project.find_by_id(params[:id])
+    redirect_to projects_path if !@project
+  end
+
+  def edit
+    @project = Project.find_by(params[:id])
+  end
+
+  def update
+    @project = Project.find_by(params[:id])
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def project_params
