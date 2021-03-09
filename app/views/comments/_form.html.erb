@@ -1,0 +1,19 @@
+<%= form_for([@comment.project, @comment]) do |f| %>
+
+  <% if !@comment.project %>
+    <%= f.label :project %>
+    <%= f.collection_select :project_id, Project.all, :id, :title %>
+  <% else %>
+    <%= f.hidden_field :project_id %>
+  <% end %>
+
+  <p>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

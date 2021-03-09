@@ -1,0 +1,7 @@
+<h1>All Comments</h1>
+
+<% @comments.each do |comment| %>
+    <li>
+      <%= comment.user.username %> says "<%= comment.content %>" about this project: <%= link_to comment.project.title, project_path(comment.project_id) %>
+    </li>
+<% end %>

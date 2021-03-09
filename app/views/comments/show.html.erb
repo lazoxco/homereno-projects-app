@@ -1,0 +1,8 @@
+<h2><%= @comment.content %></h2>
+<p>by <%= @comment.user.username %></p>
+
+<% if current_user == @comment.user %>
+<%= link_to "Edit Comment", edit_comment_path, class: "btn btn-primary"%>
+<%= link_to "Delete Comment", comment_path(@comment), class: "btn btn-danger", method: :delete %>
+<% end %>
+
