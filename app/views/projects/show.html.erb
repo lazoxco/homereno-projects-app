@@ -3,6 +3,13 @@
 <p>Description: <%= @project.content %></p>
 <hr>
 <% if current_user == @project.user %>
-<%= link_to "Edit Project", edit_project_path, class: "btn btn-primary"%>
+<%= link_to "Edit Project", edit_project_path, class: "btn btn-primary" %>
 <%= link_to "Delete Project", project_path(@project), class: "btn btn-danger", method: :delete %>
 <% end %>
+
+<h3>Project Discussion</h3>
+<% @project.comments.each do |c| %>
+  <p>"<%= link_to c.content , project_comment_path(@project, c) %>" —<%= c.user.username %></p>
+<% end %>
+<hr>
+<%= link_to "Add a Comment", new_project_comment_path(@project), class: "btn btn-primary" %>

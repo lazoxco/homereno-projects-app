@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :users do 
-    resources :posts, only: [:new, :create, :index]
+    resources :projects, only: [:new, :create, :index]
   end
   resources :projects do
     resources :comments

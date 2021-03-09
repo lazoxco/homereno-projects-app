@@ -1,3 +1,7 @@
-<h1>Add a new Comment</h1>
+<% if @project %>
+  <h1>Add a Comment | <%= @project.title %></h1>
+<% else %>
+  <h1>Add a new Comment</h1>
+<% end %>
 
 <%= render 'form' %>
