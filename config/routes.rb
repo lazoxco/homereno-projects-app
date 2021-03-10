@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  get '/auth/google_oauth2/callback' => 'sessions#google'
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
   resources :projects do
     resources :comments

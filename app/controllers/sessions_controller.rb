@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def google
-    # find_or_create a user using the attributes auth
+  def omniauth
     @user = User.find_or_create_by(email: auth['info']['email']) do |user|
       user.username = auth['info']['first_name'] + auth['info']['last_name']
       user.password = SecureRandom.hex(10)
