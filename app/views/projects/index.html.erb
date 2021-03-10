@@ -16,8 +16,5 @@
 
 
 
-<% if current_user == @user %>
-  <%= link_to "Create a New Project", new_user_project_path, class: "btn btn-primary" %>
-<% else%>
-  <%= link_to "Create a New Project", new_project_path, class: "btn btn-primary" %>
-<% end %>
+
+<%= link_to "Create a New Project", new_project_path, class: "btn btn-primary" %>

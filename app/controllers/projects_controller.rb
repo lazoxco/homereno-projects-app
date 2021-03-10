@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    redirect_if_not_logged_in
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
       @projects = @user.projects
     else
