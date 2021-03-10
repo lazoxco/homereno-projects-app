@@ -1,7 +1,24 @@
+body {
+  margin-bottom: 50px;
+}
+
 p {
   font-size: 1.2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
+}
+
+.row {
+  margin: 20px;
+}
+
+.jumbotron {
+  background-size: cover;
+}
+
+#error_explanation,
+.red-text {
+  color: red;
 }
