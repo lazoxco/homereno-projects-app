@@ -12,14 +12,20 @@
     <% @project.tasks.each do |t| %>
       <li>
         <%= t.description %><br>
-        <%= link_to "Edit", edit_task_path %> | <%= link_to "Delete", task_path(t), method: :delete %>
-        <%# link_to "Delete Comment", comment_path(@comment), class: "btn btn-danger", method: :delete %>
+
+        <% if current_user == t.user %>
+          <%= link_to "Edit", edit_task_path %> | <%= link_to "Delete", task_path(t), method: :delete %>
+        <% end %>
       </li> 
     <% end %>
   </ul>
 </p>
 
-<p><%= link_to "Add a Task", new_project_task_path(@project), class: "btn btn-primary" %></p>
+<p>
+  <% if current_user == @project.user %>
+    <%= link_to "Add a Task", new_project_task_path(@project), class: "btn btn-primary" %>
+  <% end %>
+</p>
 
 <h3>Discussion</h3>
 <% @project.comments.each do |c| %>

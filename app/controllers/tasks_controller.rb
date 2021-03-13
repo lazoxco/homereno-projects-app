@@ -19,6 +19,12 @@ class TasksController < ApplicationController
   end
 
   def index
+    if params[:project_id] && @project = Project.find_by_id(params[:project_id])
+        @tasks = @project.tasks
+    else
+      @error = "That project doesn't exist." if params[:project_id]
+      @tasks = Task.all
+    end
   end
 
   def show
