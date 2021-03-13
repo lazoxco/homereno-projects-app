@@ -1,6 +1,16 @@
 <h1>Create a new Task</h1>
 
-<%= form_for @task do |f| %>
+<%= render partial: "/layouts/errors", locals: {object: @task} %>
+
+<%= form_for([@task.project, @task]) do |f| %>
+
+  <% if !@task.project %>
+    <%= f.label :project %>
+    <%= f.collection_select :project_id, Project.all, :id, :title %>
+  <% else %>
+    <%= f.hidden_field :project_id %>
+  <% end %>
+
   <p>
     <%= f.label :description %>
     <%= f.text_field :description %>

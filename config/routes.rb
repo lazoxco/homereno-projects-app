@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tasks
   root 'sessions#home'
 
   get '/signup' => 'users#new'
@@ -11,10 +10,13 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
-
+  resources :tasks
   resources :comments
   resources :users do 
     resources :projects, only: [:new, :create, :index]
+  end
+  resources :projects do
+    resources :tasks
   end
   resources :projects do
     resources :comments
