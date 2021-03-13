@@ -1,0 +1,8 @@
+<h2><%= @task.description %></h2>
+<p><strong>Project: <%= @task.project.title %></strong></p>
+<p>by <%= @task.user.username %></p>
+
+<% if current_user == @task.user %>
+  <%= link_to "Edit Task", edit_task_path, class: "btn btn-primary"%>
+  <%= link_to "Delete Task", task_path(@task), class: "btn btn-danger", method: :delete %>
+<% end %>
