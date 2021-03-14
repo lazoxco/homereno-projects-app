@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## HomeReno App
 
-Things you may want to cover:
+This app is a project management app geared towards DIY and home improvement projects.
+Users can create an account or sign in and create project, add task items,
+and connect with other users on the platform.
 
-* Ruby version
+I created this app mainly for personal use as I wanted a project management app that I could customize
+for different jobs.
 
-* System dependencies
+### Tech or Framework Use
 
-* Configuration
+This app is built using Ruby on Rails.
 
-* Database creation
+### Features
 
-* Database initialization
+Track multiple projects, and add task items to your projects
+Connect with other users and discuss ideas. Get things done.
 
-* How to run the test suite
+### Installation
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To use this app:
+1. Clone this respository
+2. Run 'rails s' in your terminal
+3. Open http://localhost:3000 in your browser

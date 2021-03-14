@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to project_comment_path(@comment.project, @comment)
+      redirect_to project_path(@comment.project)
     else
       render :new
     end

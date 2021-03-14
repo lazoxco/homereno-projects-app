@@ -29,7 +29,7 @@
 
 <h3>Discussion</h3>
 <% @project.comments.each do |c| %>
-  <p>"<%= link_to c.content , project_comment_path(@project, c) %>" —<%= c.user.username %></p>
+  <p>"<%= c.content %>" —<%= c.user.username %></p>
 <% end %>
 <hr>
 <%= link_to "Add a Comment", new_project_comment_path(@project), class: "btn btn-primary" %>
