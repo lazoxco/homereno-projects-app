@@ -5,3 +5,16 @@
   <hr>
   </div>
 </div>
+
+<div class="row">
+  <h2>Popular Projects</h2>
+  <% @projects.each do |p| %>
+    <h4><strong><%= p.title %></strong> by <%= p.user.username %> | <%= p.comments.count%> people talking about this project</h4>
+  <% end %>
+</div>
+<hr>
+<div class="row">
+  <h3>Become a Member</h3>
+  <p><%= link_to "Sign up", :signup, :class => 'navbar-link', class: 'btn btn-primary'  %></p>
+  <p>Already a member? <%= link_to "Login", :login, :class => 'navbar-link'  %></p>
+</div>
