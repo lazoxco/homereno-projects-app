@@ -29,6 +29,26 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by_id(params[:id])
+    redirect_to tasks_path if !@task
+  end
+
+  def edit
+    @task = Task.find_by_id(params[:id])
+  end
+
+  def update
+    @task = Task.find_by(params[:id])
+    if @task.update(task_params)
+      redirect_to project_path(@task.project)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path
   end
 
   private
