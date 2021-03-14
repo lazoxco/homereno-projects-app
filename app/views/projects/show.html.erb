@@ -6,30 +6,33 @@
 <%= link_to "Delete Project", project_path(@project), class: "btn btn-danger", method: :delete %>
 <% end %>
 
-<h3>Tasks</h3>
-<p>
-  <ul>
-    <% @project.tasks.each do |t| %>
-      <li>
-        <%= t.description %><br>
-
-        <% if current_user == t.user %>
-          <%= link_to "Edit", edit_task_path %> | <%= link_to "Delete", task_path(t), method: :delete %>
-        <% end %>
-      </li> 
+<div class="row">
+  <h3>Tasks</h3>
+  <p>
+    <ul>
+      <% @project.tasks.each do |t| %>
+        <li>
+          <%= t.description %><br>
+  
+          <% if current_user == t.user %>
+            <%= link_to "Edit", edit_task_path %> | <%= link_to "Delete", task_path(t), method: :delete %>
+          <% end %>
+        </li> 
+      <% end %>
+    </ul>
+  </p>
+  
+  <p>
+    <% if current_user == @project.user %>
+      <%= link_to "Add a Task", new_project_task_path(@project), class: "btn btn-primary" %>
     <% end %>
-  </ul>
-</p>
+  </p>
+</div>
 
-<p>
-  <% if current_user == @project.user %>
-    <%= link_to "Add a Task", new_project_task_path(@project), class: "btn btn-primary" %>
+
+  <h4>Discussion</h4>
+  <% @project.comments.each do |c| %>
+    <p>"<%= c.content %>" —<%= c.user.username %></p>
   <% end %>
-</p>
-
-<h3>Discussion</h3>
-<% @project.comments.each do |c| %>
-  <p>"<%= c.content %>" —<%= c.user.username %></p>
-<% end %>
-<hr>
-<%= link_to "Add a Comment", new_project_comment_path(@project), class: "btn btn-primary" %>
+  <hr>
+  <%= link_to "Add a Comment", new_project_comment_path(@project), class: "btn btn-primary" %>
