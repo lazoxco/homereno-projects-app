@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :logged_in?, :not_current_user
+  helper_method :current_user, :logged_in?
 
   private
   def current_user

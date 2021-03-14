@@ -1,8 +1,18 @@
 class TasksController < ApplicationController
 
-  def new
-    if params[:project_id] && @project = Project.find_by_id(params[:project_id])
+  def require_permission
+    if current_user == @project.user
       @task = @project.tasks.build
+    else
+      @error = "Permission denied."
+      redirect_to projects_path
+    end
+  end
+
+  def new
+    redirect_if_not_logged_in
+    if params[:project_id] && @project = Project.find_by_id(params[:project_id])
+      require_permission
     else
       @error = "That project doesn't exist." if params[:project_id]
       @task = Task.new
@@ -33,7 +43,13 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find_by_id(params[:id])
+    redirect_if_not_logged_in
+    if params[:project_id] && @project = Project.find_by_id(params[:project_id])
+      require_permission
+    else
+      @error = "That project doesn't exist." if params[:project_id]
+      @task = Task.new
+    end
   end
 
   def update
