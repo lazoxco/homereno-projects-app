@@ -10,11 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     redirect_if_not_logged_in
-
-    if params[:user_id] && @user = User.find_by_id(params[:user_id])
-      require_permission
-      @project = Project.new
-    end
+    @project = Project.new
   end
 
   def create
