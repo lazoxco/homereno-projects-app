@@ -1,3 +1,5 @@
+<%= render partial: "/layouts/errors", locals: {object: @comment} %>
+
 <%= form_for([@comment.project, @comment]) do |f| %>
 
   <% if !@comment.project %>

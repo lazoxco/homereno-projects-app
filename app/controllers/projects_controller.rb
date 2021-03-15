@@ -1,12 +1,4 @@
 class ProjectsController < ApplicationController
-  
-  def require_permission
-    if current_user == @user
-      @project = Project.new
-    else
-      redirect_to user_path(current_user)
-    end
-  end
 
   def new
     redirect_if_not_logged_in
@@ -38,7 +30,13 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(params[:id])
+    redirect_if_not_logged_in
+    @project = Project.find_by_id(params[:id])
+    if current_user == @project.user
+      @project = Project.find_by_id(params[:id])
+    else
+      redirect_to projects_path
+    end
   end
 
   def update
